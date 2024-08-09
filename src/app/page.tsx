@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from 'react';
-import { Button, Input, Space, Typography } from 'antd';
+import { Button, Input } from 'antd';
 //import 'antd/dist/reset.css';
 
-const { Title, Paragraph } = Typography;
 
 const Home = () => {
   const [jobDescription, setJobDescription] = useState('');
@@ -32,27 +31,27 @@ const Home = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <Title>Job Description Analyzer</Title>
-      <Paragraph>
+      <h1>Job Description Analyzer</h1>
+      <p>
         Paste the job description below to receive a detailed analysis and a study roadmap.
-      </Paragraph>
-      <Space direction="vertical" style={{ width: '100%' }}>
+      </p>
+      <div style={{ width: '100%' }}>
         <Input.TextArea
           rows={6}
           value={jobDescription}
           onChange={(e) => setJobDescription(e.target.value)}
           placeholder="Paste job description here"
         />
-        <Button type="primary" onClick={handleAnalyze}>
+        <Button type="primary" onClick={handleAnalyze} style={{ marginTop: '10px' }}>
           Analyze Job
         </Button>
         {result && (
-          <div>
-            <Title level={4}>Analysis Result</Title>
+          <div style={{ marginTop: '20px' }}>
+            <h4>Analysis Result</h4>
             <div dangerouslySetInnerHTML={{ __html: result }} />
           </div>
         )}
-      </Space>
+      </div>
     </div>
   );
 };
